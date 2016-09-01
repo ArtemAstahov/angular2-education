@@ -1,0 +1,202 @@
+<form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="loginForm"
+        class="well form-horizontal"
+        id="contact_form"
+        novalidate>
+    <fieldset>
+        <legend>Contact Us Today!</legend>
+        <div class="form-group">
+            <label class="col-md-4 control-label">First Name</label>
+            <div class="col-md-4 inputGroupContainer" [ngClass]="{
+                    'has-feedback': !loginForm.controls.firstName.pristine,
+                    'has-error': loginForm.controls.firstName.errors && !loginForm.controls.firstName.pristine,
+                    'has-success': !loginForm.controls.firstName.pristine && !loginForm.controls.firstName.errors
+                    }">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                    <input
+                            formControlName="firstName"
+                            placeholder="First Name"
+                            class="form-control"
+                            type="text">
+                    <i
+                            *ngIf="!loginForm.controls.firstName.pristine"
+                            [ngClass]="{
+                                'glyphicon-remove': loginForm.controls.firstName.errors,
+                                'glyphicon-ok': !loginForm.controls.firstName.errors
+                            }"
+                            class="form-control-feedback glyphicon"
+                            data-bv-icon-for="first_name"
+                            style="display: block;"></i>
+                </div>
+                <small
+                        *ngIf="loginForm.controls.firstName.errors && !loginForm.controls.firstName.pristine"
+                        class="help-block"
+                        style="display: block;">
+                    Please supply your first name
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" >Last Name</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input
+                            formControlName="lastName"
+                            placeholder="Last Name"
+                            class="form-control"
+                            type="text"
+                            required
+                            ngModel>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">E-Mail</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input
+                            formControlName="email"
+                            placeholder="E-Mail Address"
+                            class="form-control"
+                            type="text"
+                            ngModel>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Phone #</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                    <input
+                            formControlName="phone"
+                            placeholder="(845)555-1212"
+                            class="form-control"
+                            type="text"
+                            ngModel>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input
+                            formControlName="address"
+                            placeholder="Address"
+                            class="form-control"
+                            type="text"
+                            ngModel>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">City</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input
+                            formControlName="city"
+                            placeholder="city"
+                            class="form-control"
+                            type="text"
+                            ngModel>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">State</label>
+            <div class="col-md-4 selectContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                    <select
+                            formControlName="state"
+                            class="form-control selectpicker"
+                            ngModel>
+                        <option value=" ">Please select your state</option>
+                        <option *ngFor="let state of states">{{state.label}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Zip Code</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input
+                            formControlName="zip"
+                            placeholder="Zip Code"
+                            class="form-control"
+                            type="text"
+                            ngModel>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Website or domain name</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                    <input
+                            formControlName="website"
+                            placeholder="Website or domain name"
+                            class="form-control"
+                            type="text"
+                            ngModel>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Do you have hosting?</label>
+            <div class="col-md-4">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="hosting" value="yes" /> Yes
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="hosting" value="no" /> No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Project Description</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <textarea
+                            formControlName="comment"
+                            placeholder="Project Description"
+                            class="form-control"
+                            ngModel
+                    ></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button
+                        type="submit"
+                        class="btn btn-warning"
+                        [disabled]="!loginForm.valid">
+                    Send
+                    <span class="glyphicon glyphicon-send"></span>
+                </button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+<pre>{{loginForm.value | json}}</pre>
